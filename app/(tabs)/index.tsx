@@ -10,15 +10,13 @@ import { useEffect } from 'react';
 const router = useRouter();
 
 useEffect(() => {
-  // Set a timer to switch to the second screen (Explore) after 10 seconds
   const timer = setTimeout(() => {
     router.push('/explore');
-    console.log('Navigating to Explore tab after 10 seconds');
-  }, 5000); // 10000ms = 10 seconds
-
-  // Clean up the timer when the component is unmounted
+    console.log('Sẽ tự động điều hướng sau 5s');
+  }, 5000);
   return () => clearTimeout(timer);
 }, [router]);
+
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
