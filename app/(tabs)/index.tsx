@@ -4,7 +4,21 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useRouter } from 'expo-router';
+import { useEffect } from 'react';
 
+const router = useRouter();
+
+useEffect(() => {
+  // Set a timer to switch to the second screen (Explore) after 10 seconds
+  const timer = setTimeout(() => {
+    router.push('/explore');
+    console.log('Navigating to Explore tab after 10 seconds');
+  }, 5000); // 10000ms = 10 seconds
+
+  // Clean up the timer when the component is unmounted
+  return () => clearTimeout(timer);
+}, [router]);
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
@@ -16,7 +30,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Welcome! Em tên Lê Thanh Phong - 22110198</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
